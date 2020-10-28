@@ -1,5 +1,16 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <section>
+    <Top msg= "Add a new bank card"/>
+  </section>
 </template>
+
+<script>
+import Top from "@/components/Top.vue";
+
+export default {
+  name: "Home",
+  components: {
+    Top,
+  },
+};
+</script>
