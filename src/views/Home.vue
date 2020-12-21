@@ -2,9 +2,7 @@
   <section class="home">
     <Top msg="E-Wallet"/>
     <Card :cardNumber="cardNumber" :fullName="fullName" :bankName="bankName"/>
-    <section class="stackedCards" v-for="card in cards" :card="card">
-      <Card :cardNumber="card.cardNumber" :fullName="card.fullName" :bankName="card.bankName"/>
-    </section>
+    <StackedCards :cards="cards"/>
     <button @click="addNewCard">Add a new card</button>
   </section>
 </template>
@@ -13,12 +11,14 @@
 // @ is an alias to /src
 import Top from "@/components/Top.vue";
 import Card from "@/components/Card.vue";
+import StackedCards from "@/components/StackedCards.vue";
 
 export default {
   name: "Home",
   components: {
     Card,
     Top,
+    StackedCards
   },
   data() {
     return {
@@ -30,7 +30,6 @@ export default {
   },
   async beforeMount() {
     let cards = await this.$store.dispatch("fetchCards");
-    console.log(cards);
     this.cards = cards;
     this.populateCard(this.cards[0]);
   },
