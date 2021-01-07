@@ -20,11 +20,11 @@
 
 </script>
 <style lang="scss">
-  .cardWrapper {
-    font-size: 22px;
-    font-weight: bold;
-    border: 2px solid black;
-    padding: 2rem 10rem;
-    border-radius: 8px;
-  }
+  // .cardWrapper {
+  //   font-size: 22px;
+  //   font-weight: bold;
+  //   border: 2px solid black;
+  //   padding: 2rem 10rem;
+  //   border-radius: 8px;
+  // }
 </style>
