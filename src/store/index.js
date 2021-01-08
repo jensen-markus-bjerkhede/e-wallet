@@ -5,8 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    activeCard: []
   },
   mutations: {
+    updateActiveCard(card) {
+      this.activeCard = card;
+    }
   },
   actions: {
     async fetchCards() {
@@ -27,6 +31,9 @@ export default new Vuex.Store({
       return await JSON.parse(localStorage.getItem('cards'));
     },
   },
-  modules: {
-  }
+  getters: {
+    activeCard: async state => {
+      return state.activeCard;
+    }
+  },
 })

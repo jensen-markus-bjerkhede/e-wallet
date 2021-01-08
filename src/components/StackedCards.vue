@@ -1,9 +1,5 @@
 <template>
-  <section>
-    <section v-for="card in cards" :key="card.cardNumber">
-      <Card :cardNumber="card.cardNumber" :fullName="card.fullName" :bankName="card.bankName"/>
-    </section>
-  </section>
+
 </template>
 
 <script>
@@ -15,6 +11,11 @@
     },
     props: {
       cards: Array
+    },
+    methods: {
+      test(card) {
+        alert(card.bankName);
+      },
     },
   }
 
