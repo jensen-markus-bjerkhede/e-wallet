@@ -14,7 +14,7 @@
       Card
     },
     props: {
-      cards: []
+      cards: Array
     },
   }
 
