@@ -13,27 +13,37 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async fetchCards() {
-      localStorage.setItem('cards', null);
-      let cards = [
-        {
-          fullName: "Mathias Bjerkhede",
-          cardNumber: "1324 6547 8521 74569",
-          bankName: "SEB"
-        },
-        {
-          fullName: "Markus Bjerkhede",
-          cardNumber: "4324 6547 8521 74569",
-          bankName: "n00b bank"
-        },
-        {
-          fullName: "Frida Bjerkhede",
-          cardNumber: "4324 6547 8521 1337",
-          bankName: "1337 bank"
-        }
-      ];
+    async addCard(ctx, card) {
+      let cards = await JSON.parse(localStorage.getItem('cards'));
+      if (cards === null) {
+        cards = [];
+      }
+      cards.push(card);
       localStorage.setItem('cards', JSON.stringify(cards));
-      return await JSON.parse(localStorage.getItem('cards'));
+    },
+    async fetchCards() {
+      let cards = await JSON.parse(localStorage.getItem('cards'));
+      if (cards === null) {
+        cards = [
+          {
+            fullName: "Mathias Bjerkhede",
+            cardNumber: "1324 6547 8521 74569",
+            bankName: "SEB"
+          },
+          {
+            fullName: "Markus Bjerkhede",
+            cardNumber: "4324 6547 8521 74569",
+            bankName: "n00b bank"
+          },
+          {
+            fullName: "Frida Bjerkhede",
+            cardNumber: "4324 6547 8521 1337",
+            bankName: "1337 bank"
+          }
+        ];
+        localStorage.setItem('cards', JSON.stringify(cards));
+      }
+      return cards;
     },
     async fetchSelectedCard() {
       return await JSON.parse(localStorage.getItem('card'));
