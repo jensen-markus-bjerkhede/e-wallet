@@ -3,7 +3,7 @@
     <Top msg="E-Wallet"/>
     <Card :cardNumber="activeCard.cardNumber" :fullName="activeCard.fullName" :bankName="activeCard.bankName"/>
     <StackedCards :cards="cards" />
-    <button @click="addNewCard">Add a new card</button>
+    <section class="addCard"> <button @click="addNewCard">Add a new card</button></section>
   </section>
 </template>
 

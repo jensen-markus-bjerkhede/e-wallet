@@ -30,6 +30,7 @@ export default {
    margin-bottom: 7rem;
   }
   article {
+    background-color: lightgray;
     width: 22rem;
     display: flex;
     flex-wrap: wrap;
@@ -48,5 +49,7 @@ export default {
             .bank-name {
                 margin: 28px 25px 0 auto
             }
-            
+.addCard {
+  margin-top: 20rem;
+}
 </style>
