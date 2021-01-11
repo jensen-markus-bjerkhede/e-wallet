@@ -1,5 +1,11 @@
 <template>
-
+  <section>
+    <section class="stack-wrapper" v-for="card in cards" :key="card.cardNumber">
+      <section @click="changeCard(card)">
+        <Card :cardNumber="card.cardNumber" :fullName="card.fullName" :bankName="card.bankName"/>
+      </section>
+    </section>
+  </section>
 </template>
 
 <script>
@@ -13,19 +19,27 @@
       cards: Array
     },
     methods: {
-      test(card) {
-        alert(card.bankName);
-      },
+      changeCard(card) {
+        this.$store.dispatch('updateActiveCard', card);
+      }
     },
   }
 
 </script>
 <style lang="scss">
-  // .cardWrapper {
-  //   font-size: 22px;
-  //   font-weight: bold;
-  //   border: 2px solid black;
-  //   padding: 2rem 10rem;
-  //   border-radius: 8px;
-  // }
+  .stack-wrapper {
+    height: 3rem;
+    transition: height  1s ease;
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 12rem;
+    }
+    &:hover {
+      height: 10rem;
+    }
+    &:last-child:hover {
+      height: 3rem;
+    }
+  }
 </style>

@@ -1,51 +1,48 @@
 <template>
   <section class="home">
     <Top msg="E-Wallet"/>
-    <Card :cardNumber="cardNumber" :fullName="fullName" :bankName="bankName"/>
-    <section>
-      <section v-for="card in cards" :key="card.cardNumber">
-        <section @click="test(card)">
-          <Card :cardNumber="card.cardNumber" :fullName="card.fullName" :bankName="card.bankName"/>
-        </section>
-      </section>
-    </section>
+    <Card :cardNumber="activeCard.cardNumber" :fullName="activeCard.fullName" :bankName="activeCard.bankName"/>
+    <StackedCards :cards="cards" />
     <button @click="addNewCard">Add a new card</button>
   </section>
 </template>
 
 <script>
-import Top from "@/components/Top.vue";
-import Card from "@/components/Card.vue";
+  import Top from "@/components/Top.vue";
+  import Card from "@/components/Card.vue";
+  import StackedCards from "../components/StackedCards";
 
-export default {
+  export default {
   name: "Home",
   components: {
+    StackedCards,
     Card,
     Top,
   },
   data() {
     return {
       cards: [],
-      cardNumber: '',
-      bankName: '',
-      fullName: ''
     }
   },
   async beforeMount() {
-    let cards = await this.$store.dispatch("fetchCards");
-    this.cards = cards;
-    this.populateCard(this.cards[0]);
+    this.cards = await this.$store.dispatch("fetchCards");
+    let card = JSON.parse(localStorage.getItem('card'));
+    if (!card) {
+      await this.$store.dispatch("updateActiveCard", this.cards[0]);
+    } else {
+      await this.$store.dispatch("setActiveCard", card);
+    }
   },
   methods: {
-    populateCard(card) {
-      this.cardNumber = card.cardNumber;
-      this.bankName = card.bankName;
-      this.fullName = card.fullName;
-    },
     addNewCard() {
       this.$router.push("/addcard");
     },
   },
+    computed: {
+      activeCard() {
+        return this.$store.getters.activeCard;
+      }
+    }
 };
 </script>
 <style lang="scss">
