@@ -34,10 +34,10 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     border: 2px solid black;
-    padding: 2rem 5rem;
+    padding: 0.1rem 0.25rem;
     border-radius: 8px;
   }
 

@@ -10,14 +10,27 @@
            class="full"
     >
 
-    <label for="cardholder-name">
+    <label for="fullName">
       CARDHOLDER NAME
     </label>
     <input type="text"
-           v-model="cardHolder"
-           id="cardholder-name"
+           v-model="fullName"
+           id="fullName"
            class="full"
     >
+
+    <label>
+      <select v-model="bank">
+        <option disabled value="">Please select one</option>
+        <option>Bitcoin</option>
+        <option>Evil</option>
+        <option>Ninja</option>
+        <option>Chain</option>
+      </select>
+    </label>
+
+    <Card :cardNumber="cardNumber" :fullName="fullName" :bankName="bank"/>
+
     <section class="addCard"> <button @click="addCardToStack">Add a new card</button></section>
   </section>
 
@@ -25,41 +38,29 @@
 
 <script>
   import Top from "@/components/Top.vue";
+  import Card from "../components/Card";
+
 
   export default {
     name: "Home",
     components: {
       Top,
+      Card
     },
     data() {
       return {
-
+        bank: '',
         cardNumber: '',
-        cardHolder: '',
-        // validDate: {Month:'', Year: ''},
-        // cvv: '',
-        // bank: '',
-        // logo: 'Bitcoin',
-        // theme: '',
-        //valid: false,
-        // validate: {
-        //   cardNumber: true,
-        //   cardHolder: true,
-        //   month: true,
-        //   year: true,
-        //   bank: true,
-        //   cvv: true
-        // }
+        fullName: '',
 
       }
     },
     methods: {
       async addCardToStack() {
-        console.log('sdfdsf')
         let card = {
           cardNumber: this.cardNumber,
-          bankName: "BANK",
-          fullName: this.cardHolder
+          bankName: this.bank,
+          fullName: this.fullName
         };
         await this.$store.dispatch("addCard", card);
         await this.$router.push('/');
