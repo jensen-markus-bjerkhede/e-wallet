@@ -18,7 +18,21 @@
            id="fullName"
            class="full"
     >
-
+  <label for="validThru">
+      validThru
+    </label>
+    <input type="text"
+           v-model="validThru"
+           id="validThru"
+           class="full"
+    >  <label for="CCV">
+      CCV
+    </label>
+    <input type="text"
+           v-model="CCV"
+           id="CCV"
+           class="full"
+    >
     <label>
       <select v-model="bank">
         <option disabled value="">Please select one</option>
@@ -29,7 +43,7 @@
       </select>
     </label>
 
-    <Card :cardNumber="cardNumber" :fullName="fullName" :bankName="bank"/>
+    <Card :cardNumber="cardNumber" :fullName="fullName" :bankName="bank" :validThru="validThru" :CCV="CCV"/>
 
     <section class="addCard"> <button @click="addCardToStack">Add a new card</button></section>
   </section>
@@ -52,6 +66,8 @@
         bank: '',
         cardNumber: '',
         fullName: '',
+        validThru: '',
+        CCV: '',
 
       }
     },

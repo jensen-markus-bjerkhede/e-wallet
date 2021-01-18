@@ -6,6 +6,8 @@
       <p>{{bankName}}</p>
       <p>{{fullName}}</p>
       <p>{{cardNumber}}</p>
+      <p>{{validThru}}</p>
+      <p>{{CCV}}</p>
     </article>
   </section>
 
@@ -17,7 +19,9 @@
     props: {
       cardNumber: String,
       fullName: String,
-      bankName: String
+      bankName: String,
+      validThru: String,
+      CCV: String
     }
   }
 </script>
@@ -51,4 +55,20 @@
   .addCard {
     margin-top: 20rem;
   }
+    .ch-name, .valid-date {
+                font-size: 12px;
+                line-height: 13px;
+                height: 1rem;
+            }
+            
+            .ch-name, .cardholder {
+                width: 13rem;
+                margin-left: 16px;
+                text-align: start;
+            }
+            .valid-date, .date {
+                width: 6rem;
+                
+                text-align: end;
+            }
 </style>
