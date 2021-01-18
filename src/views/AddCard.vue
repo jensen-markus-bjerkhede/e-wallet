@@ -5,6 +5,7 @@
       CARD NUMBER
     </label>
     <input type="text"
+           placeholder="xxxx xxxx xxxx xxxx"
            v-model="cardNumber"
            id="card-number"
            class="full"
@@ -14,6 +15,7 @@
       CARDHOLDER NAME
     </label>
     <input type="text"
+           placeholder="John Doe"
            v-model="fullName"
            id="fullName"
            class="full"
@@ -22,6 +24,7 @@
       validThru
     </label>
     <input type="text"
+           placeholder="xx/xx"
            v-model="validThru"
            id="validThru"
            class="full"
@@ -29,13 +32,13 @@
       CCV
     </label>
     <input type="text"
+           placeholder="xxx"
            v-model="CCV"
            id="CCV"
            class="full"
     >
     <label>
-      <select v-model="bank">
-        <option disabled value="">Please select one</option>
+      <select v-model="bank" @change="updateColor()">
         <option>Bitcoin</option>
         <option>Evil</option>
         <option>Ninja</option>
@@ -43,7 +46,7 @@
       </select>
     </label>
 
-    <Card :cardNumber="cardNumber" :fullName="fullName" :bankName="bank" :validThru="validThru" :CCV="CCV"/>
+    <Card :cardNumber="cardNumber" :fullName="fullName" :bankName="bank" :validThru="validThru" :CCV="CCV" :cardColor="cardColor"/>
 
     <section class="addCard"> <button @click="addCardToStack">Add a new card</button></section>
   </section>
@@ -63,25 +66,53 @@
     },
     data() {
       return {
-        bank: '',
+        bank: 'Bitcoin',
         cardNumber: '',
         fullName: '',
         validThru: '',
         CCV: '',
-
+        cardColor: ''
       }
+    },
+    async beforeMount() {
+      this.cardColor = this.getCardColor();
     },
     methods: {
       async addCardToStack() {
+        this.cardColor = this.getCardColor();
         let card = {
           cardNumber: this.cardNumber,
           bankName: this.bank,
-          fullName: this.fullName
+          fullName: this.fullName,
+          cardColor: this.cardColor
         };
         await this.$store.dispatch("addCard", card);
         await this.$router.push('/');
-      }
-    }
+      },
+      getCardColor() {
+        let color;
+        switch(this.bank) {
+          case "Bitcoin":
+            color = "red";
+            break;
+          case "Ninja":
+            color = "blue";
+            break;
+          case "Evil":
+            color = "yellow";
+            break;
+          case "Chain":
+            color = "green";
+            break;
+          default:
+            color = "black";
+        }
+        return color;
+      },
+      updateColor() {
+        this.cardColor = this.getCardColor();
+      },
+    },
   };
 </script>
 

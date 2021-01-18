@@ -28,18 +28,11 @@ export default new Vuex.Store({
           {
             fullName: "Mathias Bjerkhede",
             cardNumber: "1324 6547 8521 74569",
-            bankName: "SEB"
+            bankName: "Ninja",
+            validThru: '12/12',
+            CCV: '456',
+            cardColor: 'blue'
           },
-          {
-            fullName: "Markus Bjerkhede",
-            cardNumber: "4324 6547 8521 74569",
-            bankName: "n00b bank"
-          },
-          {
-            fullName: "Frida Bjerkhede",
-            cardNumber: "4324 6547 8521 1337",
-            bankName: "1337 bank"
-          }
         ];
         localStorage.setItem('cards', JSON.stringify(cards));
       }

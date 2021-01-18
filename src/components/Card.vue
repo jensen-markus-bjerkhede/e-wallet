@@ -1,9 +1,8 @@
 <template>
   <section class="cardWrapper">
-    <article>
+    <article v-bind:style="{ backgroundColor: cardColor }">
       <img src="@/assets/blipNchip.svg" class="blip" alt="">
-      <img  :src="bankName" class="bank-name" alt="">
-      <p>{{bankName}}</p>
+      <img :src="getImgUrl" class="bank-name" :alt="bankName">
       <p>{{fullName}}</p>
       <p>{{cardNumber}}</p>
       <p>{{validThru}}</p>
@@ -21,7 +20,17 @@
       fullName: String,
       bankName: String,
       validThru: String,
-      CCV: String
+      CCV: String,
+      cardColor: String
+    },
+    computed: {
+      getImgUrl() {
+        if(this.bankName) {
+          return require(`@/assets/${this.bankName.toLowerCase()}.svg`);
+        } else {
+          return require("@/assets/bitcoin.svg");
+        }
+      }
     }
   }
 </script>
@@ -32,7 +41,6 @@
     margin-bottom: 7rem;
   }
   article {
-    background-color: lightgray;
     width: 22rem;
     display: flex;
     flex-wrap: wrap;
