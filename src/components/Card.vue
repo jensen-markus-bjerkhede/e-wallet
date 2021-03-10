@@ -3,8 +3,13 @@
     <article v-bind:style="{ backgroundColor: cardColor }">
       <img src="@/assets/blipNchip.svg" class="blip" alt="">
       <img :src="getImgUrl" class="bank-name" :alt="bankName">
+      <p>
+        {{cardNumber.slice(0, 4)}}
+        {{cardNumber.slice(4, 8)}}
+        {{cardNumber.slice(8, 12)}}
+        {{cardNumber.slice(12, 16)}}
+      </p>
       <p>{{fullName}}</p>
-      <p>{{cardNumber}}</p>
       <p>{{validThru}}</p>
       <p>{{CCV}}</p>
     </article>

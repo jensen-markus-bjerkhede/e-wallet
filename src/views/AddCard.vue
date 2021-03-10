@@ -9,6 +9,7 @@
            v-model="cardNumber"
            id="card-number"
            class="full"
+           maxlength="16"
     >
 
     <label for="fullName">
@@ -28,6 +29,7 @@
            v-model="validThru"
            id="validThru"
            class="full"
+           maxlength="5"
     >  <label for="CCV">
       CCV
     </label>
@@ -36,6 +38,7 @@
            v-model="CCV"
            id="CCV"
            class="full"
+           maxlength="3"
     >
     <label>
       <select v-model="bank" @change="updateColor()">
@@ -93,16 +96,16 @@
         let color;
         switch(this.bank) {
           case "Bitcoin":
-            color = "red";
+            color = "orange";
             break;
           case "Ninja":
-            color = "blue";
+            color = "black";
             break;
           case "Evil":
-            color = "yellow";
+            color = "red";
             break;
           case "Chain":
-            color = "green";
+            color = "purple";
             break;
           default:
             color = "black";
