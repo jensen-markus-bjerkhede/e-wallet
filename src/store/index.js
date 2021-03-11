@@ -26,12 +26,12 @@ export default new Vuex.Store({
       if (cards === null) {
         cards = [
           {
-            fullName: "Mathias Bjerkhede",
-            cardNumber: "1324 6547 8521 74569",
+            fullName: "Markus Bjerkhede",
+            cardNumber: "1324654785217469",
             bankName: "Ninja",
             validThru: '12/12',
             CCV: '456',
-            cardColor: 'blue'
+            cardColor: 'black'
           },
         ];
         localStorage.setItem('cards', JSON.stringify(cards));

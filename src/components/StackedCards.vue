@@ -2,7 +2,7 @@
   <section>
     <section class="stack-wrapper" v-for="card in cards" :key="card.cardNumber">
       <section @click="changeCard(card)">
-        <Card :cardNumber="card.cardNumber" :fullName="card.fullName" :bankName="card.bankName" :cardColor="card.cardColor"/>
+        <Card :cardNumber="card.cardNumber" :fullName="card.fullName" :bankName="card.bankName" :validThru="card.validThru" :cardColor="card.cardColor"/>
       </section>
     </section>
   </section>
