@@ -16,7 +16,7 @@
       placeholder="xxxx xxxx xxxx xxxx"
       v-model="cardNumber"
       id="card-number"
-      class="full"
+      class="formlayout"
       minlength="16"
       maxlength="16"
     />
@@ -27,7 +27,7 @@
       placeholder="John Doe"
       v-model="fullName"
       id="fullName"
-      class="full"
+      class="formlayout"
     />
     <label for="validThru"> validThru </label>
     <input
@@ -35,7 +35,7 @@
       placeholder="xx/xx"
       v-model="validThru"
       id="validThru"
-      class="full"
+      class="formlayout"
       maxlength="5"
     />
     <label for="CCV"> CCV </label>
@@ -44,17 +44,17 @@
       placeholder="xxx"
       v-model="CCV"
       id="CCV"
-      class="full"
+      class="formlayout"
       maxlength="3"
     />
-    <label>
+    <label> BANK </label>
       <select class="style-wrapper" v-model="bank" @change="updateColor()">
         <option>Bitcoin</option>
         <option>Evil</option>
         <option>Ninja</option>
         <option>Chain</option>
       </select>
-    </label>
+   
 </article>
   
 
@@ -149,35 +149,12 @@ input {
   justify-content: center;
   
 }
-.full {
+.formlayout {
   width: 22rem;
   height: 3.5rem;
-
   border: 1px solid rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
   border-radius: 8px;
-}
-.half {
-  width: 10rem;
-  height: 3.5rem;
-
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  box-sizing: border-box;
-  border-radius: 8px;
-}
-
-.half-wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-.wrapper {
-  width: 10rem;
-}
-.date {
-  margin: 0;
-  width: 45%;
-  height: 95%;
-  border: 0;
 }
 .add-card {
   margin-top: 2.5rem;
@@ -190,12 +167,10 @@ input {
   align-items: center;
 }
 p {
-  font-family: PT Mono;
   font-style: normal;
   font-weight: bold;
   font-size: 22px;
   line-height: 25px;
-
   color: #ffffff;
 }
 </style>

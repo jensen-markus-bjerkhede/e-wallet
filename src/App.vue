@@ -18,7 +18,7 @@ button {
   font-size: 22px;
   font-weight: bold;
   border: 2px solid black;
-  padding: 2rem 10rem;
+  padding: 2rem 7rem;
   border-radius: 8px;
 }
 button:hover {
